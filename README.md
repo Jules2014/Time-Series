@@ -1,6 +1,69 @@
-# Time-Series
-Time series analysis comprises methods for analyzing time series data in order to extract meaningful statistics and other characteristics of the data. Time series forecasting is the use of a model to predict future values based on previously observed values.
+# Solution for *AI in Production* (coursera.org)
 
-Time series are widely used for non-stationary data, like economic, weather, stock price, and retail sales in this post. We will demonstrate different approaches for forecasting retail sales time series.
+## 1. Running the application
+To start this application run the following command:
+```
+python app.py
+```
+and navigate to the following url: [http://localhost:8080](http://localhost:8080)
 
-We live in a world of time series. Historical data is simply the starting point of the deep learning process, which is why applying AI to time series analysis is one of the more exciting recent innovations in the space. With 5G and the IoT, a wealth of data is about to be unlocked across the globe, and with time-series AI significant benefits can be realized across all kinds of verticals for all kinds of populations.
+**NOTE:** it might take a minute to respond the first time
+
+## 2. Running tests
+**NOTE:** Before running the unit tests, make sure the previous command is running
+
+To run all the tests (summary style):
+```
+python run-tests.py
+```
+To run all the test (verbose style):
+```
+python run-tests.py -v
+```
+To run only the api tests
+```
+python unittests/ApiTests.py
+```
+To run only the model tests
+```
+python unittests/ModelTests.py
+```
+
+## 3. (Re)Training the model
+A script is available to automate the ingestion of observations (and re-train all models):
+```
+python solution_guidance/model.py
+```
+it takes [Random Forest Regression](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html) by default, however [Extra Trees Regression](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.ExtraTreesRegressor.html) is also available as an option when adding the following argument:
+```
+python solution_guidance/model.py extratrees
+```
+
+## 4. Visualizations
+
+As part of the EDA investigation, these graphs were created:
+
+![alt text](static/img/img01.png)
+![alt text](static/img/img02.png)
+![alt text](static/img/img03.png)
+![alt text](static/img/img04.png)
+![alt text](static/img/img05.png)
+
+## 5. References
+Course link: [learn/ibm-ai-workflow-ai-production](https://www.coursera.org/learn/ibm-ai-workflow-ai-production)
+
+---
+The following questions are being evaluated as part of the peer review submission:
+
+1. Are there unit tests for the API?
+1. Are there unit tests for the model?
+1. Are there unit tests for the logging?
+1. Can all of the unit tests be run with a single script and do all of the unit 1. tests pass?
+1. Is there a mechanism to monitor performance?
+1. Was there an attempt to isolate the read/write unit tests from production 1. models and logs?
+1. Does the API work as expected? For example, can you get predictions for a 1. specific country as well as for all countries combined?
+1. Does the data ingestion exists as a function or script to facilitate 1. automation?
+1. Were multiple models compared?
+1. Did the EDA investigation use visualizations?
+1. Is everything containerized within a working Docker image?
+1. Did they use a visualization to compare their model to the baseline model?
